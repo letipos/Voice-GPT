@@ -2,12 +2,17 @@ import openai
 import pyttsx3
 import speech_recognition as sr
 import os
-import pyaudio
+import gradio as gr
+import configparser
 
 
-# Set the API key
-openai.api_key = "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"
+# Set the API key with config file
+config = configparser.ConfigParser()
+config_file = 'config.ini'
 
+config.read(config_file)
+api_key = config.get('API', 'key')
+openai.api_key = api_secret
 
 engine = pyttsx3.init()
 
